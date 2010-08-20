@@ -1,0 +1,9 @@
+<h2>编辑相册</h2>
+
+<% form_tag :action => 'update', :id => @category do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag '编辑分类' %>
+<% end %>
+
+<%= link_to 'Show', :action => 'show', :id => @category %> |
+<%= link_to 'Back', :action => 'list' %>

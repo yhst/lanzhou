@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="byelo,byelo!,byelo..! 毕业 毕业咯,同学录" />
+<meta http-equiv="Description" content="byelo!是一个基于ROR的WEB2.0同学录系统" />
+<meta content="all" name="byelo" />
+<meta name="author" content="IceskYsl@1ster..!" />
+<title>ByeLoo!毕业咯,我们在这个相聚..基于ROR的WEB2.0多用户同学录系统!</title>
+  <%= stylesheet_link_tag 'style' %>
+</head>
+<body>
+
+<div class="FGSideLeft fix">
+
+<div id="center" class="column">
+  <div class="col">
+    <h1><a href="/" title="ByeLoo!毕业咯..!"><span>青春激扬的我们</span> 机械化1班联络根据他</a></h1>
+    <br/>
+    <% if flash[:notice] -%>
+    <div id ="notice"> <%= flash[:notice] %> </div>
+    <% end -%>
+
+<%= yield  %>
+  </div>
+     </div>	
+   </div>
+
+
+<div class="FGSideMiddle fix">
+
+  
+  <div class="col">
+      <div id="logo">
+      <h2>ByeLoo!</h2>
+    </div>
+    <% if session[:user_id]%> 
+    <% @user=User.find(session[:user_id])%>
+    <h3><%=@user.display_name%>,欢迎您...</h3>
+    <ul id="FGArticles">
+    <li><%=link_to "发表留言/分享照片:#{@user.topic_count}/#{@user.photo_count}"%> </li>
+    <li><%=link_to "Email:#{@user.email}"%> </li>
+    <li><%=link_to "IM:#{@user.im}"%> </li>
+    <li><%=link_to "注册时间:#{@user.created_at.to_s(:my_format)}"%> </li>
+    <li><%=link_to "个性签名:#{@user.personality}"%> </li>
+    <% end %>
+   </ul>
+   
+    <h3>最新公告</h3>
+    <ul id="FGArticles">
+    <% @notices.each do |notice|%>
+    <li><%=link_to "#{notice.title}#{notice.created_at.to_s(:data_ymd)}",{:controller => "notice", :action => "view",:id=>notice.id},{:title=>notice.body}%></li>
+    <% end %>
+   </ul>
+    <h3>最新评论发言</h3>
+    <%=render :partial=>"/share/reply",:object=>@replies%>
+  </div>
+</div>
+<div class="FGSideRight fix">
+  <div class="col">
+  
+      <h3>关于我们</h3>
+    <ul id="FGNav">
+<p>
+      青春年代的我们。青春年代的我们。青春年代的我们。青春年代的我们。青春年代的我们。青春年代的我们。
+</p>
+    </ul>
+
+    <ul id="FGNav">
+    <li><%=link_to "回到首页",{:controller=>"index",:action=>"index"}%></li>
+    <li><%=link_to "班级公告",{:controller=>"/notice",:action=>"index"}%></li>
+    <li><%=link_to "最近留言",{:controller=>"/topic",:action=>"index"}%></li>
+    <li><%=link_to "班级相册",{:controller=>"/photo",:action=>"index"}%></li>
+    <li><%=link_to "通讯录",{:controller=>"/contact",:action=>"index"}%></li>
+    
+    <hr/>
+    <li><%=link_to "我的留言",{:controller=>"/topic",:action=>"mine"}%></li>
+    <li><%=link_to "我的照片",{:controller=>"/photo",:action=>"mine"}%></li>
+    <li><%=link_to "我的信箱",{:controller=>"/message",:action=>"index"}%></li>
+    <hr/>
+    <li><%=link_to "班级资料",{:controller=>"/admin/set",:action=>"index"}%></li>
+    <li><%=link_to "相册分类",{:controller=>"/admin/category",:action=>"index"}%></li>
+    <li><%=link_to "成员管理",{:controller=>"/admin/mem",:action=>"index"}%></li>
+    <li><%=link_to "成员分类",{:controller=>"/admin/user_group",:action=>"index"}%></li>
+    <hr/>
+    <li><%=link_to "我要留言",{:controller=>"/topic",:action=>"new"}%></li>
+    <li><%=link_to "上传照片",{:controller=>"/photo",:action=>"new"}%></li>
+    <li><%=link_to "个人资料",{:controller=>"/user",:action=>"profile"}%></li>
+    <li><%=link_to "修改密码",{:controller=>"/user",:action=>"password"}%></li>
+    <% if session[:user_id]%>
+    <li><%=link_to "退出登陆",{:controller=>"/index",:action=>"logout"}%></li>
+   <% end %>
+    
+    </ul>
+    <h3>感情联络点</h3>
+    <ul id="FGNav">
+
+    <% @users_links.each do |user|%>
+    <li><%=link_to user.display_name,user.website%></li>
+    <% end %>
+
+    </ul>
+     </div>
+</div>
+<!--
+design by forestgan
+create date Oct 2 2006
+http://wwww.forest53.com
+last edit Oct 25 2006
+-->
+</body>
+</html>

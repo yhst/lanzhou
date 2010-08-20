@@ -1,0 +1,28 @@
+<h2>找回密码</h2>
+<pre>
+请注意:<br>
+请正确输入如下信息，方能重新发送密码到你的邮箱...
+</pre>
+<br/>
+<%= form_tag (:action => "join_class"  )%>
+<table width="100%"   cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+
+
+<tr>
+<td>选择您的班级:  <br/> >>
+<%= collection_select(
+                 :user, :user_group_id, Group.find(:all), :id, :title) %>  </td>
+</tr>
+<tr>
+<td>请输入您的登陆名:<br/> >>
+<%= text_field("user", "login_name") %></td></tr>
+<tr>
+<td>请输入接收密码的Email:<br/> >>
+<%= text_field("user", "email") %></td></tr>
+
+<tr>
+<td><input type="submit" value = "找回我的密码!" /></td>
+</tr>
+</tbody></table>
+<% end_form_tag %>

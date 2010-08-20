@@ -1,0 +1,38 @@
+<table>
+<% posts.each do |post|%>
+<tr>
+<td valign="top">
+<div id="left_in">
+		 <image src="/images/rails.png" width=90 height=90 border =0/>
+<%= link_to post.user.display_name,{:controller=>"/user",:action=>"show",:id=>post.user.id},{:class=>"button"}%>
+</div>
+</td>
+<td>
+<div id="right_in">
+    <div id="blog_post">
+    <ol>
+        <h3>
+            <%=  link_to h(post.title),{:controller=>"/topic",:action=>"view",:id=>post.id} %>
+        </h3>    
+            <div style="margin-top: 1px;">  
+           
+                <span id="postdesc">
+                    <%=  strip_tags truncate(post.body, 400) %>
+        		</span>
+           <br/>
+            <h4>   
+             个性签名:<%= h post.user.personality%>   
+           <hr size="1" noshade="noshade" />     
+              浏览&nbsp;(<%= post.view_counts%>)&nbsp;&nbsp;|&nbsp;&nbsp;
+              评论&nbsp;(<%= post.reply_counts%>)&nbsp;&nbsp;|&nbsp;&nbsp;
+              最后更新：<%= post.created_at.to_s(:my_format)%><br> 
+            </h4>          
+            </div>     
+    </ol>
+    </div>
+</div>
+</td>
+</tr>
+<% end %>
+</table>
+    

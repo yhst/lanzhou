@@ -1,0 +1,15 @@
+<h2>新建留言</h2>
+
+<pre>
+友情提示:<br>
+请不要发布色情,政治等敏感话题,Have a good Day~
+</pre>
+
+<% form_tag :action => 'create' do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag "OK,就写这么多吧.." %>
+<% end %>
+
+
+
+

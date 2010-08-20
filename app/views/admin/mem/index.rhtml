@@ -1,0 +1,33 @@
+<h2>成员管理</h2>
+<pre>
+友情提示:<br>
+如下是您的成员信息，为了您们的信息不外传，请仔细核查每个人的资料...
+</pre>
+<h2>已有相册分类</h2>
+<table width="100%"   cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+<br/>
+<tr>
+</tr>
+  
+<% for mem in @mems %>
+  <tr>
+    <td><%=mem.created_at.to_s(:my_format)%></td>
+    <td><%=mem.display_name%>(<%=mem.login_name%>)</td>
+    <td><%=mem.email%></td>
+    <td><%=mem.mobile%></td>
+    <td><%=mem.im%></td>
+    <td><%= link_to '编辑', :action => 'edit', :id => mem %></td>
+    <td><%= link_to '删除', { :action => 'destroy', :id => mem }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<%= link_to 'Previous page', { :page => @user_pages.current.previous } if @user_pages.current.previous %>
+<%= link_to 'Next page', { :page => @user_pages.current.next } if @user_pages.current.next %> 
+
+<br />
+
+<%= link_to '新建相册', {:action => 'new'},{:class=>"button"} %>
+

@@ -1,0 +1,30 @@
+<%= error_messages_for 'user' %>
+
+<!--[form:user]-->
+<table width="100%" cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+<tr>
+
+<td>
+    <%= hidden_field "photo", "group_id",:value=>"#{session[:group_id]}"%>
+    <%= hidden_field "photo", "user_id",:value=>"#{session[:user_id]}"%>
+</td></tr>
+
+<tr>
+<td>选择相册: <br/>>> 
+<%= collection_select(
+                 :photo, :category_id, Category.find(:all,:conditions => "group_id=#{session[:group_id]}"), :id, :name) %>  </td>
+</tr>
+<tr>
+<td>图片标题:<br/>>> 
+<%= text_field 'photo', 'title'  %></td></tr>
+<tr>
+<td>图片简介:<br/>>> 
+<%= text_area("photo", "description", "cols" => 40, "rows" => 4) %></td></tr>
+<tr>
+<td>选择图片:<br/>>> 
+<%= file_field("photo", "file") %></td>
+
+<td><%= submit_tag "上传..!" %></td></tr>
+</tbody></table>
+<!--[eoform:user]-->

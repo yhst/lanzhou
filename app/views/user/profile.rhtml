@@ -1,0 +1,17 @@
+
+
+<h2>个人资料维护</h2>
+<%= form_tag (:action => "update_profile"  )%>
+  <%= render :partial => "user" %>
+<% end_form_tag %>
+<br/>
+<table width="100%" cellspacing="4" cellpadding="4" border="0" bgcolor="#f0f0f0">
+<tbody>
+<tr>
+<td>个性头像:
+<image src="<%=url_for(:action=>"show",:id=>@user.id)%>"   border =0/></td></tr>
+</tbody></table>
+<br>
+<%= form_tag ({:action => "upload"},:multipart => true  )%>
+  <%= render :partial => "upload" %>
+<% end_form_tag %>

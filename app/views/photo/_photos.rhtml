@@ -1,0 +1,26 @@
+
+
+
+    
+
+     
+<ul id="FGArticles">
+<MARQUEE height="100" widhth="200">
+<P align=left>
+<P align=center>
+
+        <% @photos.each do |photo|%>
+        
+     <%= link_to(image_tag("#{url_for(:controller=>'/photo',:action=>'picture',:id=>photo.id)}", :title => "#{photo.description}",:border=>"0",:size => "100x100",:alt => "#{photo.description}"),
+     {:controller=>"/photo",:action=>"show",:id=>photo.id},{}) %>
+        
+        <% end %>
+
+</P>
+
+</MARQUEE>
+   </ul>
+<ul>
+    
+
+    

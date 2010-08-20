@@ -1,0 +1,45 @@
+<br/>
+<pre>
+提醒:<br>
+以下是您的资料，请保证信息的有效性和准确性，以方便朋友联系到你；
+当你的email和mobile更新时，会自动发送通知给您朋友...
+</pre>
+<br/>
+
+<%= error_messages_for 'user' %>
+
+<!--[form:user]-->
+<table width="100%" cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+<tr>
+<td>登陆名:</td>
+<td><%=@user.login_name%></td></tr>
+<tr>
+<td>加入时间:</td>
+<td><%=@user.created_at.to_s(:my_format)%></td></tr>
+<tr>
+<td>留言/照片:</td>
+<td><%=@user.topic_count%>/<%=@user.photo_count%></td></tr>
+<tr>
+<td width="15%">显示名:</td>
+<td><%= text_field 'user', 'display_name'  %></td></tr>
+<tr>
+<td>性别:</td>
+<td>
+<%=radio_button("user", "sex",0) %>?&nbsp;&nbsp;<%=radio_button("user", "sex",1) %><%=image_tag("boy.gif")%>&nbsp;&nbsp;<%=radio_button("user", "sex",2) %><%=image_tag("girl.gif")%></td></tr>
+<tr>
+<td width="15%">电子邮件:</td>
+<td><%= text_field 'user', 'email'  %></td></tr>
+<tr>
+<td>移动电话:</td>
+<td><%= text_field 'user', 'mobile',:size=>"50"  %></td></tr>
+<tr>
+<td>个人描述:</td>
+<td><%= text_area("user", "personality", "cols" => 40, "rows" => 4) %></td></tr>
+    <%= hidden_field "user", "group_id",:value=>"#{session[:group_id]}"%>
+
+<tr>
+<td>&nbsp;</td>
+<td><%= submit_tag "修改资料..!" %></td></tr>
+</tbody></table>
+<!--[eoform:user]-->

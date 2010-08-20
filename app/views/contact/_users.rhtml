@@ -1,0 +1,15 @@
+
+
+<br/>
+    <h3>实时通讯录</h3>
+    <ul id="FGArticles">
+        <% @users.each do |user|%>
+        <li><%= link_to "#{user.display_name}-#{user.email}-#{user.mobile}-#{user.created_at.to_s(:data_ymd)}",{:controller => "user", :action => "profile",:id=>user.id},{:title=>user.personality}%></li>
+        <% end %>
+   </ul>
+<ul>
+    
+    <address>
+    本同学录系统由 <a href="http://www.1ster.cn">IceskYsl@1ster..!</a> 设计制作，版权所有，请勿模仿..。
+    </address>
+    

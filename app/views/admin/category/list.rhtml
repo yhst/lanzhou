@@ -1,0 +1,24 @@
+<h2>已有相册分类</h2>
+<table width="100%"   cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+<br/>
+<tr>
+</tr>
+  
+<% for category in @categories %>
+  <tr>
+    <td><%=category.name%></td>
+    <td><%=category.description%></td>
+    <td><%= link_to '编辑', :action => 'edit', :id => category %></td>
+    <td><%= link_to '删除', { :action => 'destroy', :id => category }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<%= link_to 'Previous page', { :page => @category_pages.current.previous } if @category_pages.current.previous %>
+<%= link_to 'Next page', { :page => @category_pages.current.next } if @category_pages.current.next %> 
+
+<br />
+
+<%= link_to '新建相册', {:action => 'new'},{:class=>"button"} %>

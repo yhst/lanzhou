@@ -1,0 +1,31 @@
+
+
+<br/>
+
+    <p>
+    <h2>标题：<%=link_to @photo.title %></h2><br/>
+    <center>
+     <%= link_to(image_tag("#{url_for(:controller=>'/photo',:action=>'picture',:id=>@photo.id)}",:border=>"0", :size => "500x500",:title => "#{@photo.description}",:alt => "#{@photo.description}"),
+     {:controller=>"/photo",:action=>"picture",:id=>@photo.id},{}) %>
+     </center>
+
+   <b>照片简介:</b>(本图片由<%=@photo.user.display_name%>上传于<%=@photo.created_at.to_s(:data_ymd)%>)(得鲜花<%=@photo.flowers_counts%>,得鸡蛋<%=@photo.eggs_counts%>)
+     <pre>
+     <%=@photo.description%>
+      </pre>
+      <center>
+      <%=link_to "献朵鲜花", {:action => "flower",:id => @photo.id},{:class=>"button"} %>
+      <%=link_to "丢个鸡蛋", {:action => "egg",:id => @photo.id},{:class=>"button"}%>
+     </center>
+<hr/>
+ </p>
+
+    <address>
+    本同学录系统由 <a href="http://www.1ster.cn">IceskYsl@1ster..!</a> 设计制作，版权所有，请勿模仿..。
+    </address>		
+
+
+
+
+
+

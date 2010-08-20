@@ -1,0 +1,13 @@
+
+<h2>上传图片</h2>
+<pre>
+Tips:<br>
+只能上传图片文件，且单个图片不大于2M..
+</pre>
+<br/>
+    <%=flash_helper%>
+
+<%= form_tag ({:action => "upload"},:multipart => true  )%>
+  <%= render :partial => "upload" %>
+<% end_form_tag %>
+

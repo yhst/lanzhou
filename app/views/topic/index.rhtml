@@ -1,0 +1,18 @@
+
+<div id="center" class="column">
+ 
+    <%=render :partial=>"posts",:object=>@topics%>
+         <div style="">
+         <span class=”pagelink”>
+         <%= link_to '上一页', { :page => @topic_pages.current.previous },{:class=>"button"} if @topic_pages.current.previous %>
+         <%= pagination_links(@topic_pages,{},{:class=>"button"})%> 
+         <%= link_to '下一页', { :page => @topic_pages.current.next },{:class=>"button"} if @topic_pages.current.next %>
+         </span>
+         </div>		
+     </div>	
+ 
+
+
+
+
+

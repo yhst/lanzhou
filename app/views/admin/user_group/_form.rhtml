@@ -1,0 +1,13 @@
+<%= error_messages_for 'user_group' %>
+
+<!--[form:user_group]-->
+<p><label for="user_group_name">Name</label><br/>
+<%= text_field 'user_group', 'name'  %></p>
+
+<p><label for="user_group_description">Description</label><br/>
+<%= text_field 'user_group', 'description'  %></p>
+<p>
+<%= hidden_field "category", "group_id",:value=>"#{session[:group_id]}"%>
+</p>
+<!--[eoform:user_group]-->
+

@@ -1,0 +1,14 @@
+<%= error_messages_for 'category' %>
+
+<!--[form:category]-->
+<p><label for="category_name">名称:</label><br/>
+<%= text_field 'category', 'name'  %></p>
+
+<p><label for="category_description">描述:</label><br/>
+<%= text_field 'category', 'description'  %></p>
+
+<p>
+    <%= hidden_field "category", "group_id",:value=>"#{session[:group_id]}"%>
+</p>
+<!--[eoform:category]-->
+

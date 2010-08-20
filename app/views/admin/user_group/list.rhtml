@@ -1,0 +1,32 @@
+
+<h2>已有成员分类</h2>
+
+<pre>
+友情提示:<br>
+你可以为您的成员分类，如同学,老师,联谊成员等等...
+</pre>
+
+<table width="100%"   cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+<br/>
+<tr>
+</tr>
+  
+<% for user_group in @user_groups %>
+  <tr>
+    <td><%=user_group.name%></td>
+    <td><%=user_group.description%></td>
+    <td><%= link_to '编辑', :action => 'edit', :id => user_group %></td>
+    <td><%= link_to '删除', { :action => 'destroy', :id => user_group }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<%= link_to '上一页', { :page => @user_group_pages.current.previous } if @user_group_pages.current.previous %>
+<%= link_to '下一页', { :page => @user_group_pages.current.next } if @user_group_pages.current.next %> 
+
+<br />
+
+<%= link_to '新建成员分类', {:action => 'new'},{:class=>"button"} %>
+

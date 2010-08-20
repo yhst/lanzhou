@@ -1,0 +1,29 @@
+<h2>用户登陆</h2>
+<pre>
+Tips:<br>
+欢迎登陆,请正确输入您的用户名和密码,并选择您的班级...
+</pre>
+<%= form_tag %>
+<table width="100%"   cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+<br/>
+<tr>
+<td>用户名:<br/> >>
+<%= text_field("user","login_name")%></td>
+</tr>
+
+<tr>
+<td>输入您的密码:  <br/> >>
+<%= password_field("user","password")%></td>
+</tr>
+
+<tr>
+<td>选择您的班级:  <br/> >>
+<%= collection_select(
+                 :user, :group_id, Group.find(:all), :id, :title) %>  </td>
+</tr>
+<tr>
+<td><input type="submit" value = "我来啦，快开门..!" /></td>
+</tr>
+</tbody></table>
+<%= end_form_tag %>

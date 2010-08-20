@@ -1,0 +1,10 @@
+<div id="slider_main">
+<div class="slider_title">班级通讯录</div>
+<div class="slider_body">
+<ul>
+<% @users.each do |user|%>
+<li><%=user.display_name%> -- <%= user.email%> -- <%= user.mobile%> -- <%= user.created_at.to_s(:my_format)%></li>
+<% end %>
+<ul>
+</div>
+</div>

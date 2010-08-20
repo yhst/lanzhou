@@ -1,0 +1,23 @@
+<%= error_messages_for 'topic' %>
+
+<!--[form:topic]-->
+<p><label for="topic_title">标题:</label><br/>
+<%= text_field 'topic', 'title'  %></p>
+
+<p><label for="topic_body">正文:</label><br/>
+<%= text_area 'topic', 'body' , "cols" => 60, "rows" => 14 %></p>
+<%=hidden_field("topic", "user_id", "size" => 20,:value=>session[:user_id]) %>
+<%=hidden_field("topic", "group_id", "size" => 20,:value=>session[:group_id]) %>
+
+
+
+<p>
+<label for="topic_anonymous">匿名留言:</label>
+<%= check_box 'topic', 'anonymous'  %> | 
+<label for="topic_top_it">加入公告:</label>
+<%= check_box 'topic', 'top_it'  %>
+</p>
+
+
+<!--[eoform:topic]-->
+

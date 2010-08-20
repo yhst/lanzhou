@@ -1,0 +1,25 @@
+<pre>
+友情提示:<br>
+为了与众不同，为了更加体现集体的精神，请认真书写如下资料...
+</pre>
+<br/>
+<%= error_messages_for 'user' %>
+
+<!--[form:user]-->
+<table width="100%" cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+<tr>
+<td width="15%">班级名称:</td>
+<td><%= text_field 'group', 'title'  %></td></tr>
+<tr>
+<td>班级宣言:</td>
+<td><%= text_field 'group', 'slogan',:size=>"50"  %></td></tr>
+
+<tr>
+<td>班级简介:</td>
+<td><%= text_area("group", "description", "cols" => 40, "rows" => 4) %></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td><%= submit_tag "提交资料..!" %></td></tr>
+</tbody></table>
+<!--[eoform:user]-->

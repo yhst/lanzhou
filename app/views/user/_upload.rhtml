@@ -1,0 +1,17 @@
+<%= error_messages_for 'user' %>
+
+<!--[form:user]-->
+<table width="100%" cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+<tr>
+
+<td>
+    <%= hidden_field "user", "id",:value=>"#{session[:user_id]}"%>
+</td></tr>
+<tr>
+<td>头像:</td>
+<td><%= file_field("user_file", "file") %></td>
+
+<td><%= submit_tag "上传..!" %></td></tr>
+</tbody></table>
+<!--[eoform:user]-->

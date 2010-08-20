@@ -1,0 +1,95 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Topic: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'index','topic' %>
+</head>
+<body>
+
+	<div id="header">This is the header.</div>
+
+	<div id="container">
+
+<%= yield  %>
+
+<div id="right" class="column">
+    <div id="slider_main">
+    <div class="slider_title">本班Logo</div>
+    <div class="slider_body">
+    <center>
+    <image src="/images/bjlogo.gif" width=100 height=100 border =0/>
+    </center>
+    </div>
+    </div>
+
+    <div id="slider_main">
+    <div class="slider_title">本班简介</div>
+    <div class="slider_body">
+    <ul>  
+    青春年代的我们。青春年代的我们。青春年代的我们。青春年代的我们。青春年代的我们。青春年代的我们。
+    </ul>
+    </div>
+    </div>
+
+    <div id="slider_main">
+    <div class="slider_title">公共列表</div>
+    <div class="slider_body">
+    <ul>
+    <li><%=link_to "班级公告",{:controller=>"notice",:action=>"index"}%></li>
+    <li><%=link_to "最近留言",{:controller=>"topic",:action=>"index"}%></li>
+    <li><%=link_to "班级相册",{:controller=>"photo",:action=>"index"}%></li>
+    <li><%=link_to "通讯录",{:controller=>"contact",:action=>"index"}%></li>
+    </ul>
+    </div>
+    </div>
+
+    <div id="slider_main">
+    <div class="slider_title">个人工具箱</div>
+    <div class="slider_body">
+    <ul>
+    <li><%=link_to "我的留言",{:controller=>"topic",:action=>"mine"}%></li>
+    <li><%=link_to "我的照片",{:controller=>"photo",:action=>"mine"}%></li>
+    <li><%=link_to "我的信箱",{:controller=>"message",:action=>"index"}%></li>
+    </ul>
+    </div>
+    </div>
+
+    <div id="slider_main">
+    <div class="slider_title">管理面版</div>
+    <div class="slider_body">
+    <ul>
+    <li><%=link_to "我要留言",{:controller=>"topic",:action=>"new"}%></li>
+    <li><%=link_to "上传照片",{:controller=>"ptoto",:action=>"new"}%></li>
+    <li><%=link_to "个人资料",{:controller=>"user",:action=>"profile"}%></li>
+    <li><%=link_to "修改密码",{:controller=>"user",:action=>"password"}%></li>
+    </ul>
+    </div>
+    </div>
+
+    <div id="slider_main">
+    <div class="slider_title">感情联络点</div>
+    <div class="slider_body">
+    <ul>
+    <% @users_links.each do |user|%>
+    <li><%=link_to user.display_name,user.website%></li>
+    <% end %>
+    </ul>
+    </div>
+    </div>
+
+</div＞
+
+</div>
+
+
+
+	<div id="footer-wrapper">
+		<div id="footer">This is the footer.</div>
+	</div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,25 @@
+<h2>加入班级</h2>
+
+<pre>
+请注意:<br>
+选择正确的班级加入，否则您可能无法通过班级管理员的验证...
+</pre>
+<br/>
+<%= form_tag (:action => "join_class"  )%>
+<table width="100%"   cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+
+
+<tr>
+<td>选择您的班级:  <br/> >>
+<%= collection_select(
+                 :user, :group_id, Group.find(:all), :id, :title) %>  </td>
+</tr>
+<tr>
+<td>验证消息:<br/> >>
+<%= text_area("group", "description", "cols" => 40, "rows" => 4) %></td></tr>
+<tr>
+<td><input type="submit" value = "Login..!" /></td>
+</tr>
+</tbody></table>
+<% end_form_tag %>

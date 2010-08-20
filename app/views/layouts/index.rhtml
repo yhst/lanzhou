@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="byelo,byelo!,byelo..! 毕业 毕业咯,同学录" />
+<meta http-equiv="Description" content="byelo!是一个基于ROR的WEB2.0同学录系统" />
+<meta content="all" name="byelo" />
+<meta name="author" content="IceskYsl@1ster..!" />
+<title>ByeLoo!毕业咯,我们在这个相聚..基于ROR的WEB2.0多用户同学录系统!</title>
+  <%= stylesheet_link_tag 'style' %>
+</head>
+<body>
+<div class="FGSideLeft fix">
+<div id="center" class="column">
+  <div class="col">
+    <h1><a href="/" title="ByeLoo!"><span>ByeLoo!毕业咯..!</span> 我们在这里把感情延续...</a></h1>
+    
+    <br/>
+    <% if flash[:notice] -%>
+    <div id ="notice"> <%= flash[:notice] %> </div>
+    <% end -%>
+<%= yield  %>
+     </div>	
+   </div>
+</div>
+<div class="FGSideMiddle fix">
+
+  
+  <div class="col">
+      <div id="logo">
+      <h2>ByeLoo!</h2>
+    </div>
+    <h3>关于ByeLoo!</h3>
+    <ul id="FGNav">
+        <p>
+        立足建设一个把我们的学生时代的感情延续的；这里是我们的根据地，我们在这里延续学生时代的梦想和希望，
+        我们并没有分离，我们在这里再相遇...   
+        </p>
+    </ul>
+    <h3>加入本站你可以</h3>
+    <ul id="FGArticles">
+    <li><%=link_to "1.和同学朋友及时取得联系."%></li>
+    <li><%=link_to "2.当你联系方式发生变化时，不需要逐个通知，系统会给您的同学发送一份电子邮件."%></li>
+    <li><%=link_to "3.当你朋友的联系方式发生变化时，自己也能第一时间得到."%></li>
+    <li><%=link_to "4.和朋友分享您的照片."%></li>
+    <li><%=link_to "5.分享您的心情,分享您的故事.."%></li>
+   </ul>
+
+    <h3>版权信息</h3>
+    <ul id="FGArticles">
+    本站采用Ruby On Rails技术开发,即将开源,如有需要,请联系<%=mail_to "iceskysl@domain.com", "IceskYsl@1ster..!", :encode => "javascript"%>,本站技术支持<%=link_to "1ster..!", "http://www.1ster.cn/"%>
+   </ul>
+  </div>
+</div>
+
+<div class="FGSideRight fix">
+  <div class="col">
+
+
+    <ul id="FGNav">
+    <li><%=link_to "回到首页",{:controller=>"index",:action=>"index"}%></li>
+    <% if session[:user_id] and session[:group_id] != 0%>
+    <li><%=link_to "我的班级",{:controller=>"topic",:action=>"index"}%></li>
+    <li><%=link_to "退出登陆",{:controller=>"/index",:action=>"logout"}%></li>
+    <% else %>
+        <% if session[:user_id]%>
+        <li><%=link_to "加入班级",{:controller=>"index",:action=>"join_class"}%></li>   
+        <li><%=link_to "注册班级",{:controller=>"index",:action=>"register_class"}%></li>
+        <li><%=link_to "退出登陆",{:controller=>"/index",:action=>"logout"}%></li>
+        <% else %>
+        <li><%=link_to "我要登陆",{:controller=>"index",:action=>"login"}%></li>
+        <li><%=link_to "我要注册",{:controller=>"index",:action=>"register"}%></li> 
+        <li><%=link_to "找回密码",{:controller=>"index",:action=>"find_pass"}%></li>
+        <% end %>
+    <% end %>
+
+
+    </ul>
+    
+    <h3>活跃班级</h3>
+    <ul id="FGNav">
+    <% @groups_hots.each do |group|%>
+    <li><%=link_to group.title,{},{:title=>group.description}%></li>
+    <% end %>
+    </ul>
+    
+    <h3>活跃成员</h3>
+    <ul id="FGNav">
+    <% @users_links.each do |user|%>
+    <li><%=link_to user.display_name,user.website%></li>
+    <% end %>
+    </ul>
+    
+    
+        <h3>最新注册班级</h3>
+    <ul id="FGNav">
+    <% @groups.each do |group|%>
+    <li><%=link_to group.title,{},{:title=>group.description}%></li>
+    <% end %>
+    </ul>
+    
+    <h3>最新注册成员</h3>
+    <ul id="FGNav">
+    <% @users_links.each do |user|%>
+    <li><%=link_to user.display_name,user.website%></li>
+    <% end %>
+    </ul>
+     </div>
+</div>
+
+</body>
+</html>

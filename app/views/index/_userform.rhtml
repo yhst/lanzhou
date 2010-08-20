@@ -1,0 +1,35 @@
+<pre>
+请注意:<br>
+为了给你的同学，朋友提供有效的联系信息，请认真填写如下资料...
+</pre>
+<br/>
+<%= error_messages_for 'user' %>
+
+<!--[form:user]-->
+<table width="100%" cellspacing="4" cellpadding="4" border="0" align="center" bgcolor="#f0f0f0">
+<tbody>
+<tr>
+<td width="15%">登陆名:</td>
+<td><%= text_field 'user', 'login_name'  %></td></tr>
+<tr>
+<td>显示名:</td>
+<td><%= text_field 'user', 'display_name'  %></td></tr>
+<tr>
+<td>密码:</td>
+<td><%= password_field 'user', 'password' , "maxlength" => 20, "size" => 20  %></td></tr>
+<tr>
+<td>确认密码:</td>
+<td><%= password_field 'user', "password_confirmation", "maxlength" => 20, "size" => 20   %></td></tr>
+<tr>
+<td>电子邮件:</td>
+<td><%= text_field 'user', 'email'  %></td></tr>
+<td>手机:</td>
+<td><%= text_field 'user', 'mobile'  %></td></tr>
+<tr>
+<td>个人描述:</td>
+<td><%= text_area("user", "personality", "cols" => 40, "rows" => 4) %></td></tr>
+<tr>
+<td>&nbsp;</td>
+<td><%= submit_tag "注册..!" %></td></tr>
+</tbody></table>
+<!--[eoform:user]-->

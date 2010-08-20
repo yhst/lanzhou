@@ -1,0 +1,9 @@
+<h2>编辑成员分类</h2>
+
+<% form_tag :action => 'update', :id => @user_group do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<%= link_to 'Show', :action => 'show', :id => @user_group %> |
+<%= link_to 'Back', :action => 'list' %>

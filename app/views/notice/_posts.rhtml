@@ -1,0 +1,16 @@
+
+
+<% posts.each do |post|%>
+    <h2><%=  link_to h(post.title),{:controller=>"/topic",:action=>"view",:id=>post.id} %></h2>
+    <p>
+   
+    <%= link_to post.user.display_name,{:controller=>"/user",:action=>"show",:id=>post.user.id},{}%>
+    发表于<%= post.created_at.to_s(:my_format)%>&nbsp;|&nbsp;浏览:(<%= post.view_counts%>) &nbsp;|&nbsp;回复:(<%= post.reply_counts%>) <br/>
+    <%=  strip_tags truncate(post.body, 400) %>
+    </p>
+<% end %>
+    
+    <address>
+    本同学录系统由 <a href="http://www.1ster.cn">IceskYsl@1ster..!</a> 设计制作，版权所有，请勿模仿..。
+    </address>
+    

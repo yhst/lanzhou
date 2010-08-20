@@ -1,0 +1,28 @@
+
+
+
+<br/>
+    <h3>班级相册</h3>
+    <center>
+     <%= link_to(image_tag("#{url_for(:controller=>'/photo',:action=>'picture',:id=>@photo.id)}",:border=>"0", :title => "#{@photo.description}",:size => "500x500",:alt => "#{@photo.description}"),
+     {:controller=>"/photo",:action=>"picture",:id=>@photo.id},{}) %>
+     </center>
+<hr/>
+    <%=render :partial=>"photos",:object=>@photos,:locals=>{:photo=>@photo}%>
+         <div style="">
+         <span class=”pagelink”>
+         <%= link_to '上一页', { :page => @photo_pages.current.previous },{:class=>"button"} if @photo_pages.current.previous %>
+         <%= pagination_links(@photo_pages,{},{:class=>"button"})%> 
+         <%= link_to '下一页', { :page => @photo_pages.current.next },{:class=>"button"} if @photo_pages.current.next %>
+         </span>
+         </div>
+    <address>
+    本同学录系统由 <a href="http://www.1ster.cn">IceskYsl@1ster..!</a> 设计制作，版权所有，请勿模仿..。
+    </address>		
+     </div>	
+   </div>
+
+
+
+
+
